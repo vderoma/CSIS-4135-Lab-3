@@ -1,4 +1,4 @@
-﻿var selectSize = function () {
+var selectSize = function () {
     var size = document.querySelector("input[type=radio]:checked").value;
 	document.querySelector("#receipt").innerHTML = "Size: " + size;
 }
@@ -20,25 +20,9 @@ var getQuantity = function (){
 	
 }
 
-var setAge = function(){
-	var date = moment();
-	var legalDate = date.subtract(21, "years");
-	document.querySelector("#ageDate").innerHTML = legalDate.format('ddd MMM DD, YYYY');
-}
-
 var showAge = function(){
-	if (document.getElementById("beverageList").value > "1"){
-		setAge();
-        showAgeCheck();
-		showAgeChecker();
-		hideReceipt();
-		}
-    else{
-        hideAgeCheck();
-		hideAgeChecker();
-    }        
-}
 
+}
 
 
 var getOrderPrice = function (){
@@ -148,7 +132,6 @@ var showAgeChecker = function () {
 var hideAgeChecker = function () {
     document.getElementById('ageChecker').style.display = "none";
 }
-
 
 
 window.onload = function (event) {

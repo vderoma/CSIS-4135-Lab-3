@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Beverage Order</title>
     <script src="JavaScript.js"></script>
+    <script src="moment.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -14,31 +15,67 @@
     </header>
 
     <form>
-        <div class="form-row w-50">
+        <div class="form-row">
             <label for="textInput" class="col-sm-2 col-form-label">Customer Name:</label>
             <div class="col-sm-10">
-                <input type="text" id="textInput" required class="form-control w-50" placeholder="Enter customer name."
+                <input type="text" id="textInput" required class="form-control w-25" placeholder="Enter your name." />
             </div>
         </div>
     </form>
 
-    
     <div class="my-4">
-         <form>
+        <form>
             <div class="form-row">
-                <label for="dropdown" class="col-form-label">Beverage:</label>
-                <div id="dropdown "class="col-25">
-                    <select class="form-control">
-                        <option value="0">Volvo</option>
-                        <option value="1">Saab</option>
-                        <option value="2">Mercedes</option>
-                        <option value="3">Audi</option>
+                <label for="dropdown" class="col-form-label col-sm-2">Beverage:</label>
+                <div id="dropdown" class="marginRight">
+                    <select id="beverageList" class="form-control" onchange="showAge()">
+                        <option value="0">Coffee</option>
+                        <option value="1">Tea</option>
+                        <option value="2">Beer</option>
+                        <option value="3">Wine</option>
                     </select>
                 </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" name="size" value="Small">
+                    Small
+               
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" name="size" value="Medium">
+                    Medium
+               
+                </div>
+                <div class="form-check form-check-inline marginRight">
+                    <input type="radio" name="size" value="Large" checked>
+                    Large
+               
+                </div>
+                <label for="quantityInput" class="col-form-label col-sm-1 marginLeft">Quantity:</label>
+                <div>
+                    <input type="number" id="quantityInput" class="form-control w-25" required>
+                </div>
+
             </div>
         </form>
-        <div id="selectedcar"></div>
     </div>
 
+    <div id="ageChecker" style="display:none; padding-bottom: 50px" class="form-row">
+        <label for="ageInput" class="col-form-label col-sm-2">Enter Birthdate (MM/DD/YYYY): </label>
+        <input id="ageInput" required type="text" />
+    </div>
+     
+    <button type="button" id="orderSubmit" class="btn" style="background-color: green; color: white">Submit Order</button>
+
+    <div id="ageCheck" style="display:none" class="receipt">
+        <h1>Must be born before:</h1>
+        <p id="ageDate"></p>
+    </div>
+
+    <div id="receipt" class="receipt" style="display:none">
+        <h1>Receipt</h1>
+        <p id="orderSummary"> </p>
+        <p id="orderTotal"></p>
+        
+    </div>
 </body>
 </html>
